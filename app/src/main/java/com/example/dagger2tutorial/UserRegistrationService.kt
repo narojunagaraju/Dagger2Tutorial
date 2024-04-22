@@ -1,7 +1,6 @@
 package com.example.dagger2tutorial
 
 import javax.inject.Inject
-import javax.inject.Named
 
 class UserRegistrationService @Inject constructor(
     private val userRepository: UserRepository,

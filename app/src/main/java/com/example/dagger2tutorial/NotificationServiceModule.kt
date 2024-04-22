@@ -2,9 +2,11 @@ package com.example.dagger2tutorial
 
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class NotificationServiceModule() {
+    @Singleton
     @MessageQualifier
     @Provides
     fun getNotificationService(retryCount: Int): NotificationService {
