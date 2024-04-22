@@ -23,7 +23,11 @@ class MainActivity : AppCompatActivity() {
          * Lifetime of these objects
          * Not extensible
          */
-        val userRegistrationService = UserRegistrationService()
+
+        val userRepository = UserRepository()
+        val emailService = EmailService()
+
+        val userRegistrationService = UserRegistrationService(userRepository, emailService)
         userRegistrationService.registerUser("test@gmail.com", "password")
     }
 }
