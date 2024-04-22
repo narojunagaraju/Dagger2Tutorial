@@ -1,12 +1,10 @@
 package com.example.dagger2tutorial
 
 import dagger.BindsInstance
-import dagger.Component
-import javax.inject.Singleton
+import dagger.Subcomponent
 
 @ActivityScope
-@Component(
-    dependencies = [AppComponent::class],
+@Subcomponent(
     modules = [UserRepositoryModule::class, NotificationServiceModule::class]
 )
 interface UserRegistrationComponent {
@@ -16,11 +14,10 @@ interface UserRegistrationComponent {
     fun getEmailService(): EmailService
 
 
-    @Component.Factory
+    @Subcomponent.Factory
     interface Factory {
         fun create(
-            @BindsInstance retryCount: Int,
-            appComponent: AppComponent
+            @BindsInstance retryCount: Int
         ): UserRegistrationComponent
     }
 }

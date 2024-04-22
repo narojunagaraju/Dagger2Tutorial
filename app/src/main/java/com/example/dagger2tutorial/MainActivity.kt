@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         val appComponent = (application as UserApplication).appComponent
         val userRegistrationComponent =
-            DaggerUserRegistrationComponent.factory().create(3, appComponent)
+            appComponent.getUserRegistrationComponentFactory().create(3)
         userRegistrationComponent.inject(this)
 
         //userRegistrationComponent.inject(this)
