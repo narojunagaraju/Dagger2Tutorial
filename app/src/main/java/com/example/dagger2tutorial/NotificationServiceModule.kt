@@ -6,7 +6,7 @@ import javax.inject.Singleton
 
 @Module
 class NotificationServiceModule() {
-    @Singleton
+    @ActivityScope
     @MessageQualifier
     @Provides
     fun getNotificationService(retryCount: Int): NotificationService {

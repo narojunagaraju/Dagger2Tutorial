@@ -8,6 +8,6 @@ import javax.inject.Singleton
 abstract class UserRepositoryModule {
 
     @Binds
-    @Singleton
+    @ActivityScope
     abstract fun bindSqlRepository(sqlRepository: SqlRepository): UserRepository
 }

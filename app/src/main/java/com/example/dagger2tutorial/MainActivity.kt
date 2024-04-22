@@ -30,8 +30,12 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val userRegistrationComponent = (application as UserApplication).userRegistrationComponent
+        val appComponent = (application as UserApplication).appComponent
+        val userRegistrationComponent =
+            DaggerUserRegistrationComponent.factory().create(3, appComponent)
         userRegistrationComponent.inject(this)
+
+        //userRegistrationComponent.inject(this)
         userRegistrationService.registerUser("hello@test.com", "hello")
         Log.e(TAG, "onCreate: $emailService1 $emailService2")
     }
