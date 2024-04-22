@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var emailService1: EmailService
 
-    //These singleton objects will bre recreated if we rotate the device
     @Inject
     lateinit var emailService2: EmailService
 
@@ -31,9 +30,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val userRegistrationComponent = DaggerUserRegistrationComponent.factory().create(3)
+        val userRegistrationComponent = (application as UserApplication).userRegistrationComponent
         userRegistrationComponent.inject(this)
         userRegistrationService.registerUser("hello@test.com", "hello")
-        Log.e(TAG, "onCreate: $emailService1 $emailService2" )
+        Log.e(TAG, "onCreate: $emailService1 $emailService2")
     }
 }
