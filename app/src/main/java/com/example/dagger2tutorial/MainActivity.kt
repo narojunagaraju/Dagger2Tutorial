@@ -16,18 +16,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val component = DaggerUserRegistrationComponent.builder().build()
 
-        /***
-         * Unit testing isn't easy
-         * Single Responsibility violation
-         * Lifetime of these objects
-         * Not extensible
-         */
-
-        val userRepository = UserRepository()
-        val emailService = EmailService()
-
-        val userRegistrationService = UserRegistrationService(userRepository, emailService)
+        val userRegistrationService =
+            component.getUserRegistrationService()
+        val emailService = component.getEmailService()
         userRegistrationService.registerUser("test@gmail.com", "password")
+        emailService.send("a", "b")
     }
 }
