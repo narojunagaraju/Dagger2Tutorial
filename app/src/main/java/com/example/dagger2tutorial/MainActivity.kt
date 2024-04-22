@@ -23,10 +23,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val userRegistrationComponent = DaggerUserRegistrationComponent
-            .builder()
-            .notificationServiceModule(NotificationServiceModule(3))//if we forget this it will lead to crash
-            .build()
+        val userRegistrationComponent = DaggerUserRegistrationComponent.factory().create(3)
         userRegistrationComponent.inject(this)
         userRegistrationService.registerUser("hello@test.com", "hello")
     }
